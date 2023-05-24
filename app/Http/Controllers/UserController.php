@@ -39,13 +39,24 @@ class UserController extends Controller
 
     public function register(Request $request) {
         $validated = $request->validate([
-            'username' => 'required|alpha_num|min:4|max:10',
-            'password' => 'required|alpha_num|min:4|max:12|confirmed',
-            'email' => 'required|email'
+            'username' => 'required|alpha_num|min:4|max:24|unique:users,username',
+            'password' => 'required|alpha_num|min:4|max:16|confirmed',
+            'email' => 'required|email|unique:users,email'
         ]);
+
         $user = User::create($validated);
         Auth::login($user);
 
         return redirect(route('home'));
+    }
+
+    public function getUserPage(User $user)
+    {
+        return view('user', compact('user'));
+    }
+
+    public function getUserPosts(User $user){
+        $posts = $user->posts;
+        return view('posts', compact('posts'));
     }
 }

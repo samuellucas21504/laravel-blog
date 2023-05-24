@@ -1,5 +1,5 @@
 @php
-    $classString = "text-xl " . $class
+    $classString = "text-xl " . ($class ?? '')
 @endphp
 
 <button class="{{$classString}}" type="{{$type ?? "submit"}}">

@@ -18,10 +18,13 @@
             <ul class="font-light cursor-pointer">
             @auth
             <li class="hover:text-white mr-2">
-                Posts
+                <a href="/posts">Posts</a>
             </li>
             <li class="hover:text-white mr-2">
-                You
+                <a href="/post/create">Create Post</a>
+            </li>
+            <li class="hover:text-white mr-2">
+                <a href="/user/{{Auth::user()->username}}">You</a>
             </li>
             <li class="hover:text-white">
                 <a href="/logout">
