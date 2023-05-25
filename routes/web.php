@@ -43,6 +43,6 @@ Route::put('/post/{post}/edit', [PostController::class, 'editPost'])->middleware
 
 Route::delete('/post/{post}/delete', [PostController::class, 'deletePost'])->middleware('can:delete,post');
 
-Route::get('/user/{user:username}', [UserController::class, 'getUserPage']);
+Route::get('/user/{user:username}', [UserController::class, 'getUserPage'])->middleware('auth');
 
-Route::get('/user/{user:username}/posts', [UserController::class, 'getUserPosts']);
+Route::get('/user/{user:username}/posts', [UserController::class, 'getUserPosts'])->middleware('auth');

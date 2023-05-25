@@ -37,7 +37,7 @@ class PostPolicy
      */
     public function update(User $user, post $post): bool
     {
-        return ($user->id == $post->user->id) || $user->is_admin == 1;
+        return ($user->id == $post->user->id);
     }
 
     /**

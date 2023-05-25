@@ -45,6 +45,7 @@ class UserController extends Controller
         ]);
 
         $user = User::create($validated);
+
         Auth::login($user);
 
         return redirect(route('home'));
